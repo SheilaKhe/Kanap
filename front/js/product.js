@@ -50,7 +50,6 @@ cartBtn.addEventListener('click', () => {
     const product = {
              quantity : parseInt(document.getElementById("quantity").value),
              color : document.getElementById("colors").value,
-             imageUrl: imgPdt,
              id : id
          }
 
@@ -69,7 +68,9 @@ cartBtn.addEventListener('click', () => {
 
     // Ajout du produit dans le panier
     function addCart(product) {
+
         let cart = getCart();
+
         // Recherche si le produit existe ou pas
         let pdtFound = cart.find(p => p.id == product.id && p.color == product.color);
         console.log(pdtFound);
@@ -84,12 +85,10 @@ cartBtn.addEventListener('click', () => {
         localStorage.setItem('addToCart', JSON.stringify(cart));
     }
 
-    // function removeItem() {
-    //     let cart = getCart();
-    //     cart = cart.filter(p => p.id == product.id);
-    //     localStorage.setItem('addToCart', JSON.stringify(cart));
-    // }
-
-    addCart(product);
-
+    if (product.quantity > 0 && product.quantity <= 100 && product.color != "") {
+        addCart(product);
+        window.reload();
+    } else {
+        alert("Il manque quelques informations...") 
+    }
 })

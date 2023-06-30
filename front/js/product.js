@@ -1,22 +1,17 @@
-//Variables 
-const params = new URL(document.location).searchParams;
 // Récupération id produit
+const params = new URL(document.location).searchParams;
 const id = params.get("id");
 const url = `http://localhost:3000/api/products/${id}`;
 
-// Récupération du titre 
+// Récupération des éléments HTML
 const titlePdt = document.getElementById("title");
-// Recupération du prix
 const pricePdt = document.getElementById("price");
-// Récupération de la description
 const descPdt = document.getElementById("description");
-// Récupération de l'image
-const imgPdt = document.createElement("img");
-document.querySelector(".item__img").appendChild(imgPdt)
-
 const colorPdt = document.getElementById("colors");
-
 const qtyPdt = document.getElementById("quantity");
+
+const imgPdt = document.createElement("img");
+document.querySelector(".item__img").appendChild(imgPdt);
 
 
 // Affichage produit sélectionné
